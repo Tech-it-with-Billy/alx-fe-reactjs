@@ -2,6 +2,7 @@ import WelcomeMessage from './components/WelcomeMessage.jsx';
 import Header from './components/Header.jsx';
 import MainContent from './components/MainContent.jsx';
 import Footer from './components/Footer.jsx';
+import UserProfile from './components/UserProfile.jsx';
 
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
@@ -17,6 +18,7 @@ function App() {
     <WelcomeMessage />
     <MainContent />
     <Footer />
+    <UserProfile name="John Doe" age={30} bio="A software developer from California." />
 
       <div>
         <a href="https://vite.dev" target="_blank">
