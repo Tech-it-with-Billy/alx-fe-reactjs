@@ -11,14 +11,13 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-
   return (
     <>
     <Header />
     <WelcomeMessage />
     <MainContent />
-    <Footer />
     <UserProfile name="John Doe" age={30} bio="A software developer from California." />
+    <Footer />
 
       <div>
         <a href="https://vite.dev" target="_blank">
