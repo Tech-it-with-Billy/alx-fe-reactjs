@@ -9,16 +9,25 @@ const Contact = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({
+        setFormData(prev => ({
         ...prev,
         [name]: value
         }));
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Prevent page reload on submit
+        console.log('Form submitted:', formData);
+        // You can add further submission logic here
+    };
+
     return (
         <div style={{ padding: '2rem' }}>
         <h1>Contact Us</h1>
-        <form style={{ display: 'flex', flexDirection: 'column', maxWidth: '400px' }}>
+        <form 
+            onSubmit={handleSubmit} 
+            style={{ display: 'flex', flexDirection: 'column', maxWidth: '400px' }}
+        >
             <input
             type="text"
             name="name"
@@ -26,6 +35,7 @@ const Contact = () => {
             value={formData.name}
             onChange={handleChange}
             style={{ margin: '0.5rem 0', padding: '0.5rem' }}
+            required
             />
             <input
             type="email"
@@ -34,6 +44,7 @@ const Contact = () => {
             value={formData.email}
             onChange={handleChange}
             style={{ margin: '0.5rem 0', padding: '0.5rem' }}
+            required
             />
             <textarea
             name="message"
@@ -42,9 +53,10 @@ const Contact = () => {
             onChange={handleChange}
             rows="5"
             style={{ margin: '0.5rem 0', padding: '0.5rem' }}
+            required
             />
             <button
-            type="button"
+            type="submit" // Changed to submit button
             style={{ padding: '0.5rem', backgroundColor: '#282c34', color: 'white', border: 'none' }}
             >
             Submit
