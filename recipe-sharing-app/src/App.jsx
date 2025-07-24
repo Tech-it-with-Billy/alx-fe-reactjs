@@ -1,22 +1,31 @@
-import { useState } from 'react'
-import React from 'react'
-import './App.css'
-import RecipeList from './components/RecipeList'
-import AddRecipeForm from './components/AddRecipeForm'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
+import RecipeList from './components/RecipeList';
+import AddRecipeForm from './components/AddRecipeForm';
+import RecipeDetails from './components/RecipeDetails';
+import EditRecipeForm from './components/EditRecipeForm';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <AddRecipeForm />
-      <RecipeList />
-      <h2>Recipe Sharing App</h2>
-      <p>Share your favorite recipes with the world!</p>
-      <p>Click the button to increment the count:</p>
-    </>
-  )
+    <Router>
+      <div className="App">
+        <header>
+          <h1>Recipe Sharing App</h1>
+          <nav>
+            <Link to="/">Home</Link> | <Link to="/add">Add Recipe</Link>
+          </nav>
+        </header>
+
+        <Routes>
+          <Route path="/" element={<RecipeList />} />
+          <Route path="/add" element={<AddRecipeForm />} />
+          <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
+          <Route path="/recipes/:recipeId/edit" element={<EditRecipeForm />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
-export default App
-      
+export default App;
