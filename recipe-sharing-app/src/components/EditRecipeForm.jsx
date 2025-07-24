@@ -18,11 +18,11 @@ const EditRecipeForm = () => {
 
     if (!recipe) return <p>Recipe not found</p>;
 
-    const handleChange = e =>
-        setForm({ ...form, [e.target.name]: e.target.value });
+    const handleChange = event =>
+        setForm({ ...form, [event.target.name]: event.target.value });
 
-    const handleSubmit = e => {
-        e.preventDefault();
+    const handleSubmit = event => {
+        event.preventDefault();
         updateRecipe(recipeId, form);
         navigate(`/recipes/${recipeId}`);
     };
