@@ -5,7 +5,7 @@ const RecipeDetails = () => {
     const {recipeId} = useParams();
     const navigate = useNavigate();
 
-    const recipe = useRecipeStore((state) => state.recipe.find((r) => r.id));
+    const recipe = useRecipeStore((state) => state.recipe.find((recipe) => recipe.id));
 
     if (!recipe) return  <p>Recipe not found</p>
     const handleEdit = () => {
