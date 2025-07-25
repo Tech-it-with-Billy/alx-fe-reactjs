@@ -1,6 +1,7 @@
 import { create } from "zustand";
+import { useRecipeStore } from './recipeStore';
 
-export const useRecipeStore = create((set) => ({
+const recipeStore = create((set) => ({
     recipes: [],
     setRecipes: (recipes) => set({ recipes }),
     addRecipe: (recipe) => set((state) => ({ recipes: [...state.recipes, recipe] })),
@@ -14,3 +15,16 @@ export const useRecipeStore = create((set) => ({
     })),
 }));
 
+const SearchBar = () => {
+    const setSearchTerm = useRecipeStore(state => state.setSearchTerm);
+
+    return (
+        <input
+        type="text"
+        placeholder="Search recipes..."
+        onChange={(e) => setSearchTerm(e.target.value)}
+        />
+    );
+};
+
+export default useRecipeStore;
