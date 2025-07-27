@@ -1,7 +1,7 @@
 import { useRecipeStore } from './recipeStore';
 import { Link } from 'react-router-dom';
 
-const RecommendationList = () => {
+const RecommendationsList = () => {
     const recipes = useRecipeStore(state => state.recipes);
     const favorites = useRecipeStore(state => state.favorites);
 
@@ -43,4 +43,4 @@ const RecommendationList = () => {
     );
 };
 
-export default RecommendationList;
+export default RecommendationsList;
