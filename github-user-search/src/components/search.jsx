@@ -19,7 +19,7 @@ function Search() {
         } catch (err) {
             setError(true);
         } finally {
-            setLoading(false);
+            setLoading(false)
         }
     }
 
