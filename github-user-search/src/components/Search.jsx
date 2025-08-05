@@ -38,7 +38,8 @@ function Search() {
 
             <div className="result">
                 {loading && <p>Loading...</p>}
-                {error && <p>Looks like we can't find the user.</p>}
+                {error && 
+                <p>Looks like we can't find the user.</p>}
                 {userData && (
                 <div className="user-info">
                     <img src={userData.avatar_url} alt="User Avatar" width="100" />
