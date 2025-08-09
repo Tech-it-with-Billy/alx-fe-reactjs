@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const GITHUB_API = import.meta.env.VITE_GITHUB_API; // from .env
+const GITHUB_API = "https://api.github.com/search/users?q"
 
 export const fetchAdvancedUsers = async ({ username, location, minRepos }) => {
     let queryParts = [];
