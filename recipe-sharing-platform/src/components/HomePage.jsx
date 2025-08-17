@@ -35,7 +35,7 @@ function HomePage() {
                 className="w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
             />
         </div>
-        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {filteredRecipes.map((recipe) => (
             <div
                 key={recipe.id}
