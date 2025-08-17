@@ -3,15 +3,18 @@ import React, { useState } from "react";
 function AddRecipeForm() {
     const [title, setTitle] = useState("");
     const [ingredients, setIngredients] = useState("");
-    const [instructions, setInstructions] = useState("");
+    const [steps, setSteps] = useState(""); // renamed
     const [errors, setErrors] = useState({});
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // Validation
         const newErrors = {};
         if (!title.trim()) newErrors.title = "Title is required.";
         if (!ingredients.trim() || ingredients.split(",").length < 2)
             newErrors.ingredients = "Enter at least two ingredients, separated by commas.";
-        if (!instructions.trim()) newErrors.instructions = "Instructions are required.";
+        if (!steps.trim()) newErrors.steps = "Steps are required.";
 
         setErrors(newErrors);
 
@@ -19,14 +22,14 @@ function AddRecipeForm() {
             const newRecipe = {
                 title: title.trim(),
                 ingredients: ingredients.split(",").map((i) => i.trim()),
-                instructions: instructions.split("\n").map((i) => i.trim()),
+                steps: steps.split("\n").map((i) => i.trim()),
             };
 
             console.log("New Recipe:", newRecipe);
 
             setTitle("");
             setIngredients("");
-            setInstructions("");
+            setSteps("");
             alert("Recipe added successfully!");
         }
     };
@@ -47,8 +50,9 @@ function AddRecipeForm() {
                     />
                     {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
                 </div>
+
                 <div>
-                    <label className="block text-gray-700 font-medium mb-1">Ingredients (Separate with commas)</label>
+                    <label className="block text-gray-700 font-medium mb-1">Ingredients (Separate using commas)</label>
                     <textarea
                         value={ingredients}
                         onChange={(e) => setIngredients(e.target.value)}
@@ -62,23 +66,23 @@ function AddRecipeForm() {
                         <p className="text-red-500 text-sm mt-1">{errors.ingredients}</p>
                     )}
                 </div>
+
                 <div>
                     <label className="block text-gray-700 font-medium mb-1">
-                        Instructions (one step per line)
+                        Preparation Steps (one per line)
                     </label>
                     <textarea
-                        value={instructions}
-                        onChange={(e) => setInstructions(e.target.value)}
+                        value={steps}
+                        onChange={(e) => setSteps(e.target.value)}
                         rows={6}
                         className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 ${
-                        errors.instructions ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-green-500"
+                        errors.steps ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-green-500"
                         }`}
                         placeholder="e.g., Boil water, Cook pasta, Fry bacon"
                     />
-                    {errors.instructions && (
-                        <p className="text-red-500 text-sm mt-1">{errors.instructions}</p>
-                    )}
+                    {errors.steps && <p className="text-red-500 text-sm mt-1">{errors.steps}</p>}
                 </div>
+
                 <button
                     type="submit"
                     className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-lg transition duration-300"
