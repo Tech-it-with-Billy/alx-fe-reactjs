@@ -6,19 +6,22 @@ function AddRecipeForm() {
     const [steps, setSteps] = useState(""); // renamed
     const [errors, setErrors] = useState({});
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        // Validation
+    const validate = () => {
         const newErrors = {};
         if (!title.trim()) newErrors.title = "Title is required.";
         if (!ingredients.trim() || ingredients.split(",").length < 2)
-            newErrors.ingredients = "Enter at least two ingredients, separated by commas.";
+        newErrors.ingredients = "Enter at least two ingredients, separated by commas.";
         if (!steps.trim()) newErrors.steps = "Steps are required.";
+        return newErrors;
+    };
 
-        setErrors(newErrors);
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-        if (Object.keys(newErrors).length === 0) {
+        const validationErrors = validate(); 
+        setErrors(validationErrors);
+
+        if (Object.keys(validationErrors).length === 0) {
             const newRecipe = {
                 title: title.trim(),
                 ingredients: ingredients.split(",").map((i) => i.trim()),
@@ -45,7 +48,7 @@ function AddRecipeForm() {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 ${
-                        errors.title ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-green-500"
+                            errors.title ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-green-500"
                         }`}
                     />
                     {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
