@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function AddRecipeForm() {
     const [title, setTitle] = useState("");
     const [ingredients, setIngredients] = useState("");
-    const [steps, setSteps] = useState(""); // renamed
+    const [steps, setSteps] = useState("");
     const [errors, setErrors] = useState({});
 
     const validate = () => {
