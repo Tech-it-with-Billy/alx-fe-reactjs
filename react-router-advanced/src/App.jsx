@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import {BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Profile from "./components/Profile";
 import BlogPost from "./components/BlogPost";
 import ProtectedRoute from "./components/ProtectedRoute";
