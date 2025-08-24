@@ -10,17 +10,17 @@ const RegistrationForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!username ) {
+        if (!username) {
             setErrors("Username is required");
             return;
         }
         
-        if (!email ) {
+        if (!email) {
             setErrors("Email is required");
             return;
         }   
 
-        if (!password ) {
+        if (!password) {
             setErrors("Password is required");
             return;
         }
